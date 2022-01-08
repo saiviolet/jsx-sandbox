@@ -1,4 +1,6 @@
 import React from 'react';
+import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js';
+import uuid from 'react-uuid'
 // Вставьте первую константу в первый абзац, а вторую константу - во второй.
 // function App() {
 // 	const str1 = 'text1';
@@ -204,20 +206,163 @@ import React from 'react';
 // Сделайте функцию getDigitsSum, которая будет находить сумму цифр переданного числа. С ее помощью выведите на экран сумму цифр числа 123.
 // -----------------задача 16 -------------------------------
 //перевод в строку и обработно
+// function App() {
+//   let number = 22;
+//   let sum = 0;
+//   function getDigitsSum(number) {
+//     let num = String(number);
+//     for(let i = 0; i < num.length; i++) {
+//       sum = sum + Number(num[i]);
+//     }
+//     return sum;
+//   }
+
+//   return <>
+//   <p>Сумма цифр числа {number} равна {getDigitsSum(number)}</p>
+//   </>
+// }
+// -----------------задача 17 -------------------------------
+// Сделайте так, чтобы по клику на первую кнопку срабатывала первая функция, а по клику на вторую кнопку - вторая функция.
+// -----------------задача 17 -------------------------------
+// function App() {
+// 	function show1() {
+// 		alert(1);
+// 	}
+	
+// 	function show2() {
+// 		alert(2);
+// 	}
+	
+// 	return <div>
+// 		<button onClick={show1}>act1</button>
+// 		<button onClick={show2}>act2</button>
+// 	</div>;
+// }
+// -----------------задача 18 -------------------------------
+// Сделайте так, чтобы по клику на первую кнопку алертом выводилось число 1, по клику на вторую кнопку - число 2, а по клику на третью - число 3.
+// -----------------задача 18 -------------------------------
+// function App() {
+//   	function showMessage(message) {
+// 		alert(message);
+// 	}
+// 	return <div>
+// 		<button onClick={ () => {showMessage(1)}}>act1</button>
+// 		<button onClick={ () => {showMessage(2)}}>act2</button>
+// 		<button onClick={ () => {showMessage(3)}}>act3</button>
+// 	</div>;
+// }
+// -----------------задача 19 -------------------------------
+// 1) Дана кнопка. По клику на нее получите объект Event и выведите его в консоль.
+// 2) Дана кнопка. По клику на нее получите выведите в консоль event.target клика.
+// -----------------задача 19 -------------------------------
+// function App() {
+//   return <>
+//   <button onClick={(evt) => {console.log(evt)}}>Event</button>
+//   <button onClick={(evt) => {console.log(evt.target)}}>Event target</button>
+//   </>
+// }
+// -----------------задача 20 -------------------------------
+// Как работает этот код? Переделайте приведенный код так, чтобы функция принимала два параметра.
+// -----------------задача 20 -------------------------------
+// function App() {
+// 	function func(event, arg, arg2) {
+// 		console.log(event, arg, arg2);
+// 	}
+	
+// 	return <div>
+// 		<button onClick={event => func(event, 'eee', 'fdfdfd')}>act</button>
+// 	</div>;
+// }
+// -----------------задача 21 -------------------------------
+// function App() {
+// 	const arr = [];
+	
+// 	for (let i = 0; i <= 4; i++) {
+// 		arr.push(<li>{i+1}</li>);
+// 	}
+	
+// 	return <ul>
+// 		{arr}
+// 	</ul>;
+// -----------------задача 22 -------------------------------
+// function App() {
+// 	const arr = ['a', 'b', 'c', 'd', 'e'];
+// }
+// С помощью этого массива сформируйте следующий код:
+
+// <ul>
+// 	<li>a</li>
+// 	<li>b</li>
+// 	<li>c</li>
+// 	<li>d</li>
+// 	<li>e</li>
+// </ul>
+// -----------------задача 22 -------------------------------
+// function App() {
+// 	const arr = ['a', 'b', 'c', 'd', 'e'];
+//   return <ul>
+//     {arr.map(function (item, index) {
+//       return <li key={index}>{item}</li>
+//     })}
+//   </ul>
+// }
+// -----------------задача 23 -------------------------------
+// В компоненте App дан следующий массив:
+
+// const users = [
+// 	{name: 'user1', surn: 'surn1', age: 30},
+// 	{name: 'user2', surn: 'surn2', age: 31},
+// 	{name: 'user3', surn: 'surn3', age: 32},
+// ];
+// Выведите элементы этого массива в виде списка ul.
+// -----------------задача 23 -------------------------------
+// function App() {
+//   const users = [
+// 	  {id: 1234444, name: 'user1', surn: 'surn1', age: 30},
+// 	  {id: 1234445, name: 'user2', surn: 'surn2', age: 31},
+// 	  {id: 1234446, name: 'user3', surn: 'surn3', age: 32},
+//   ];
+//   return <ul>
+//     {users.map((item) => {
+//       return <li key={item.id}>{item.name} {item.surn} {item.age}</li>
+//     })}
+//   </ul>
+// }
+// -----------------задача 24 -------------------------------
+// В компоненте App дан следующий массив:
+
+// const users = [
+// 	{id: 1, name: 'user1', surn: 'surn1', age: 30},
+// 	{id: 2, name: 'user2', surn: 'surn2', age: 31},
+// 	{id: 3, name: 'user3', surn: 'surn3', age: 32},
+// ];
+// Выведите элементы этого массива в виде таблицы table так, чтобы каждое поле объекта попало в свой тег td. Сделайте заголовки колонок вашей таблицы.
+// +генерация айди через библиотеки
+// -----------------задача 24 -------------------------------
 function App() {
-  let number = 22;
-  let sum = 0;
-  function getDigitsSum(number) {
-    let num = String(number);
-    for(let i = 0; i < num.length; i++) {
-      sum = sum + Number(num[i]);
-    }
-    return sum;
+  function generateId() {
+    return uuid();
   }
-
-  return <>
-  <p>Сумма цифр числа {number} равна {getDigitsSum(number)}</p>
-  </>
+  const users = [
+	{id: generateId(), name: 'user1', surn: 'surn1', age: 30},
+	{id: generateId(), name: 'user2', surn: 'surn2', age: 31},
+	{id: generateId(), name: 'user3', surn: 'surn3', age: 32},
+  ];
+  return <table>
+    <tr>
+      <td>Айди</td>
+      <td>Имя</td>
+      <td>Фио</td>
+      <td>Возраст</td>
+    </tr>
+    {users.map((item) => {
+      return <tr key={item.id}>
+        <td>{item.id}</td>
+        <td>{item.name}</td>
+        <td>{item.surn}</td>
+        <td>{item.age}</td>
+      </tr>
+    })}
+  </table>
 }
-
 export default App;
