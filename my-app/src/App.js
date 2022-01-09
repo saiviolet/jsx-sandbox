@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js';
 import uuid from 'react-uuid'
 // Вставьте первую константу в первый абзац, а вторую константу - во второй.
@@ -339,30 +339,70 @@ import uuid from 'react-uuid'
 // Выведите элементы этого массива в виде таблицы table так, чтобы каждое поле объекта попало в свой тег td. Сделайте заголовки колонок вашей таблицы.
 // +генерация айди через библиотеки
 // -----------------задача 24 -------------------------------
+// function App() {
+//   function generateId() {
+//     return uuid();
+//   }
+//   const users = [
+// 	{id: generateId(), name: 'user1', surn: 'surn1', age: 30},
+// 	{id: generateId(), name: 'user2', surn: 'surn2', age: 31},
+// 	{id: generateId(), name: 'user3', surn: 'surn3', age: 32},
+//   ];
+//   return <table>
+//     <tr>
+//       <td>Айди</td>
+//       <td>Имя</td>
+//       <td>Фио</td>
+//       <td>Возраст</td>
+//     </tr>
+//     {users.map((item) => {
+//       return <tr key={item.id}>
+//         <td>{item.id}</td>
+//         <td>{item.name}</td>
+//         <td>{item.surn}</td>
+//         <td>{item.age}</td>
+//       </tr>
+//     })}
+//   </table>
+// }
+// -----------------задача 25 -------------------------------
+// function App() {
+//   const [name, setName] = useState('Хлебушек');
+//   const [cost, setCost] = useState('50рэ');
+//   function clickHandler() {
+//     setName('Батон');
+//   }
+//   function clickHandler2() {
+//     setCost('45рэ');
+//   }
+//   return <div>
+// 		<p>{name}</p>
+//     <button onClick={clickHandler}>Меняем на батон!</button><br/>
+//     <button onClick={clickHandler2}>Скок стоит батон?!</button>
+//     <p>{cost}</p>
+// 	</div>;
+// }
+// -----------------задача 26 -------------------------------
+// function App() {
+// 	let [inCart, setInCart] = useState(false);
+	
+// 	return <div>
+// 		<span>{inCart ? 'в корзине' : 'не в корзине'}</span>
+// 		<button onClick={() => setInCart(!inCart)}>жмяк</button>
+// 	</div>;
+// }
+// -----------------задача 27 -------------------------------
+// Давайте сделаем счетчик кликов по кнопке:
 function App() {
-  function generateId() {
-    return uuid();
-  }
-  const users = [
-	{id: generateId(), name: 'user1', surn: 'surn1', age: 30},
-	{id: generateId(), name: 'user2', surn: 'surn2', age: 31},
-	{id: generateId(), name: 'user3', surn: 'surn3', age: 32},
-  ];
-  return <table>
-    <tr>
-      <td>Айди</td>
-      <td>Имя</td>
-      <td>Фио</td>
-      <td>Возраст</td>
-    </tr>
-    {users.map((item) => {
-      return <tr key={item.id}>
-        <td>{item.id}</td>
-        <td>{item.name}</td>
-        <td>{item.surn}</td>
-        <td>{item.age}</td>
-      </tr>
-    })}
-  </table>
+	let [count, setCount] = useState(0);
+	
+	function counter() {
+		setCount(count + 1);
+	}
+	
+	return <div>
+		<span>{count}</span>
+		<button onClick={counter}>+</button>
+	</div>;
 }
 export default App;
