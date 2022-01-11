@@ -514,49 +514,128 @@ import uuid from 'react-uuid'
 // ----------------- задача 34 -------------------------------
 // Даны 5 инпутов. Сделайте так, чтобы при вводе чисел в наши инпуты в абзац выводилось среднее арифметическое введенных чисел.
 // ----------------- задача 34 -------------------------------
-function App() {
-  let [value1, setValue1] = useState('10');
-  let [value2, setValue2] = useState('10');
-  let [value3, setValue3] = useState('10');
-  let [value4, setValue4] = useState('10');
-  let [value5, setValue5] = useState('10');
+// function App() {
+//   let [value1, setValue1] = useState('10');
+//   let [value2, setValue2] = useState('10');
+//   let [value3, setValue3] = useState('10');
+//   let [value4, setValue4] = useState('10');
+//   let [value5, setValue5] = useState('10');
 
-  function arithmeticalMean(values) {
-    //если передают строчные значения
-    const numberValues = values.map(Number);
-    let sum = 0;
-    const count = numberValues.length;
-    numberValues.forEach( value => sum += value);
-    return sum / count;
-  }
+//   function arithmeticalMean(values) {
+//     //если передают строчные значения
+//     const numberValues = values.map(Number);
+//     let sum = 0;
+//     const count = numberValues.length;
+//     numberValues.forEach( value => sum += value);
+//     return sum / count;
+//   }
 
-  function handleChange1(evt) {
-    setValue1(evt.target.value)
-  }
-  function handleChange2(evt) {
-    setValue2(evt.target.value)
-  }
-  function handleChange3(evt) {
-    setValue3(evt.target.value)
-  }
-  function handleChange4(evt) {
-    setValue4(evt.target.value)
-  }
-  function handleChange5(evt) {
-    setValue5(evt.target.value)
-  }
-  return <>
-  <span>Значение 1: </span>
-  <input value={value1} onChange={handleChange1}/><br/>
-  <span>Значение 2: </span>
-  <input value={value2} onChange={handleChange2}/><br/>
-  <span>Значение 3: </span>
-  <input value={value3} onChange={handleChange3}/><br/>
-  <span>Значение 4: </span>
-  <input value={value4} onChange={handleChange4}/><br/>
-  <span>Значение 5: </span>
-  <input value={value5} onChange={handleChange5}/><br/>
-  <p>Среднее арифметическое: {arithmeticalMean([value1, value2, value3, value4, value5])}</p>
-  </>
-}
+//   function handleChange1(evt) {
+//     setValue1(evt.target.value)
+//   }
+//   function handleChange2(evt) {
+//     setValue2(evt.target.value)
+//   }
+//   function handleChange3(evt) {
+//     setValue3(evt.target.value)
+//   }
+//   function handleChange4(evt) {
+//     setValue4(evt.target.value)
+//   }
+//   function handleChange5(evt) {
+//     setValue5(evt.target.value)
+//   }
+//   return <>
+//   <span>Значение 1: </span>
+//   <input value={value1} onChange={handleChange1}/><br/>
+//   <span>Значение 2: </span>
+//   <input value={value2} onChange={handleChange2}/><br/>
+//   <span>Значение 3: </span>
+//   <input value={value3} onChange={handleChange3}/><br/>
+//   <span>Значение 4: </span>
+//   <input value={value4} onChange={handleChange4}/><br/>
+//   <span>Значение 5: </span>
+//   <input value={value5} onChange={handleChange5}/><br/>
+//   <p>Среднее арифметическое: {arithmeticalMean([value1, value2, value3, value4, value5])}</p>
+//   </>
+// }
+// ----------------- задача 35 -------------------------------
+// Даны два инпута, две кнопки и абзац. Пусть в инпуты вводятся числа. 
+// По нажатию на первую кнопку найдите сумму чисел, а по нажатию на вторую кнопку - произведение. 
+// Результат выводите в абзац.
+// ----------------- задача 35 -------------------------------
+// function App() {
+//   let [value1, setValue1] = useState('');
+//   let [value2, setValue2] = useState('');
+//   let [resultSum, setResultSum] = useState('');
+//   let [resultMult, setResultMult] = useState('');
+//   return <div>
+//     <input value={value1} onChange={evt => setValue1(evt.target.value)}/><br/>
+//     <input value={value2} onChange={evt => setValue2(evt.target.value)}/><br/>
+//     <button onClick={() => setResultSum(Number(value1) + Number(value2))}>Сумма</button><br/>
+//     <button onClick={() => setResultMult(Number(value1) * Number(value2))}>Произведение</button>
+//     {resultSum && <p>Сумма чисел равна: {resultSum}</p>}
+//     {resultMult && <p>Произведение чисел равно: {resultMult}</p>}
+//   </div>
+// }
+// ----------------- задача 36 -------------------------------
+// Пусть в textarea на каждой строке вводятся числа. Сделайте так, чтобы по мере ввода в абзац выводилась сумма введенных чисел.
+// ----------------- задача 36 -------------------------------
+// function App() {
+// 	const [value, setValue] = useState('');
+//   const [result, setResult] = useState('');
+	
+// 	function handleChange(event) {
+// 		setValue(event.target.value);
+//     const numberArray = event.target.value.split('\n').map(Number);
+//     getSum(numberArray);
+//     console.log(numberArray);
+// 	}
+//   function getSum(arr) {
+//     let sum = 0;
+//     arr.forEach(el => sum += el);
+//     return setResult(sum);
+//   }
+	
+// 	return <div>
+// 		<textarea value={value} onChange={handleChange} />
+// 		{result > 0 && <p>Сумма чисел: {result}</p>}
+// 	</div>;
+// }
+// ----------------- задача 37 -------------------------------
+// Дан чекбокс, кнопка и абзац. По клику на кнопку, если чекбокс отмечен, 
+// выведите в абзац текст приветствия с пользователем, а если не отмечен - текст прощания.
+// ----------------- задача 37 -------------------------------
+// function App() {
+//   const [checked, setChecked] = useState(true);
+//   const [result, setResult] = useState('');
+//   return <div>
+//     <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)}/><br/>
+//     <button onClick={() => checked ? setResult('Привет!'): setResult('Пока!')}>Показать текст!</button>
+//     <p>{result}</p>
+//   </div>
+// }
+// ----------------- задача 38 -------------------------------
+// С помощью трех чекбоксов попросите пользователя выбрать языки, 
+// которые он знает: html, css и js. Результат выбора по каждому языку выводите в отдельные абзацы.
+// ----------------- задача 38 -------------------------------
+// function App() {
+//   const [checkedJS, setCheckedJS] = useState(true);
+//   const [checkedCSS, setCheckedCSS] = useState(false);
+//   const [checkedHTML, setCheckedHTML] = useState(false);
+//   const [resultJS, setResultJS] = useState('JS');
+//   const [resultCSS, setResultCSS] = useState('CSS');
+//   const [resultHTML, setResultHTML] = useState('HTML');
+
+//   return <div>
+//     <span>JS</span><input type="checkbox" checked={checkedJS} onChange={() => setCheckedJS(!checkedJS)}/>
+//     <span>CSS</span><input type="checkbox" checked={checkedCSS} onChange={() => setCheckedCSS(!checkedCSS)}/>
+//     <span>HTML</span><input type="checkbox" checked={checkedHTML} onChange={() => setCheckedHTML(!checkedHTML)}/>
+//     <p>Пользователь знает:</p>
+//     <p>{checkedJS && resultJS }</p>
+//     <p>{checkedCSS && resultCSS}</p>
+//     <p>{checkedHTML && resultHTML}</p>
+//   </div>
+// }
+
 export default App;
