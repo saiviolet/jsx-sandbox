@@ -393,16 +393,170 @@ import uuid from 'react-uuid'
 // }
 // -----------------задача 27 -------------------------------
 // Давайте сделаем счетчик кликов по кнопке:
+// function App() {
+// 	let [count, setCount] = useState(0);
+	
+// 	function counter() {
+// 		setCount(count + 1);
+// 	}
+	
+// 	return <div>
+// 		<span>{count}</span>
+// 		<button onClick={counter}>+</button>
+// 	</div>;
+// }
+// -----------------задача 28 -------------------------------
+// Пусть вы хотите отображать на экране данные юзера: его имя, фамилию, возраст. Сделайте для этого соответствующие стейты с начальными значениями.
+// Сделайте кнопки для изменения имени и фамилии.
+// -----------------задача 28 -------------------------------
+// function App() {
+//   let [name, setName] = useState('Имя пользователя');
+//   let [surname, setSurname] = useState('Фамилия пользователя');
+//   let [age, setAge] = useState('18');
+//   return <div>
+//     <div>
+//       <p>{name}</p><button onClick={() => {setName('Карабас')}}>Изменить имя</button>
+//       <p>{surname}</p><button onClick={() => {setSurname('Барабас')}}>Изменить фамилию</button>
+//       <p>{age}</p><button onClick={() => {setAge('10000')}}>Изменить возраст</button>
+//     </div>
+//   </div>
+// }
+// -----------------задача 29 -------------------------------
+// 1.Добавьте еще один стейт, который будет показывать, забанен пользователь или нет. Выведите информацию об этом в каком-нибудь теге.
+// Сделайте кнопку, нажатие на которую будет банить пользователя и кнопку, нажатие на которую будет разбанивать пользователя.
+// 2.Модифицируйте предыдущую задачу так, чтобы из двух кнопок всегда была видна только соответствующая. 
+// 3.То есть, если пользователь забанен, то видна кнопка для разбанивания, а если не забанен - для забанивания.
+// 4.Сделайте еще две кнопки. Пусть первая кнопка увеличивает возраст на единицу, а вторая - уменьшает его.
+// -----------------задача 29 -------------------------------
+// function App() {
+//   let [name, setName] = useState('Имя пользователя');
+//   let [surname, setSurname] = useState('Фамилия пользователя');
+//   let [age, setAge] = useState(18);
+//   let [isBan, setBan] = useState(true);
+//   return <div>
+//     <div>
+//       <p>{name}</p>
+//       <button onClick={() => {setName('Карабас')}}>Изменить имя</button>
+//       <p>{surname}</p>
+//       <button onClick={() => {setSurname('Барабас')}}>Изменить фамилию</button>
+//       <p>{age}</p>
+//       <button onClick={() => {setAge(age + 1)}}>Добавить годок</button>
+//       <button onClick={() => {setAge(age - 1)}}>Удалить годок</button>
+//       <p>{isBan ? 'Пользователь забанен' : 'Пользователь не забанен'}</p>
+//       {isBan ? <button onClick={() => {setBan(!isBan)}}>Снять бан</button> : <button onClick={() => {setBan(!isBan)}}>Забанить</button>}
+//     </div>
+//   </div>
+// }
+// ----------------- задача 30 -------------------------------
+// организовать работу инпута
+// Сделайте два инпута. Пусть текст первого инпута выводится в первый абзац, а текст второго инпута - во второй абзац.
+// ----------------- задача 30 -------------------------------
+// function App() {
+//   //стейт для значения инпута
+// 	const [value1, setValue1] = useState('');
+//   const [value2, setValue2] = useState('');
+// 	//инпут
+// 	return <div>
+//     <p>Значение первого инпута:{value1}</p>
+// 		<input value={value1} onChange={(evt) => {setValue1(evt.target.value)}}/>
+//     <p>Значение второго инпута:{value2}</p>
+// 		<input value={value2} onChange={(evt) => {setValue2(evt.target.value)}}/>
+// 	</div>;
+// }
+// ----------------- задача 31 -------------------------------
+// Дан инпут. Дан абзац. Сделайте так, чтобы при вводе текста в инпут, в абзаце выводилось количество введенных в инпут символов.
+// ----------------- задача 31 -------------------------------
+// function App() {
+//   //стейт для значения инпута
+// 	const [value, setValue] = useState('');
+// 	//инпут
+// 	return <div>
+//     <p>Количество символов в инпут: {value.length}</p>
+// 		<input value={value} onChange={evt => {setValue(evt.target.value)}}/>
+// 	</div>;
+// }
+// ----------------- задача 32 -------------------------------
+// Дан инпут и абзац. В инпут вводится возраст пользователя. 
+// Сделайте так, чтобы при наборе текста, в абзаце автоматически появлялся год рождения пользователя.
+// ----------------- задача 32 -------------------------------
+// function App() {
+//   let [age, setAge] = useState('0');
+//   function getYearOfBirthday(age) {
+//      const today = new Date();
+//     return today.getFullYear() - age;
+//   }
+//   function handleChange(evt) {
+//     setAge(evt.target.value)
+//   }
+//   return <>
+//   <input value={age} onChange={handleChange}/>
+//   <p>{age <= 0 ? 'Пользователю менее 1 года' : `Пользователь родился в  ${getYearOfBirthday(age)} году`}</p>
+//   </>
+// }
+// ----------------- задача 33 -------------------------------
+// Дан инпут и абзац. В инпут вводятся градусы Фаренгейта. 
+// Сделайте так, чтобы при наборе текста, в абзаце автоматически выполнялась конвертация в градусы Цельсия.
+// ----------------- задача 33 -------------------------------
+// function App() {
+//   let [temp, setTemp] = useState('68');
+//   function getCelsius(temp) {
+//     return Math.trunc((Number(temp) - 32) * (5 / 9))
+//   }
+//   function handleChange(evt) {
+//     setTemp(evt.target.value)
+//   }
+//   return <>
+//   <span>Температура в градусах по Фаренгейту: </span>
+//   <input value={temp} onChange={handleChange}/>
+//   <p>Температура в градусах по Цельсию: {getCelsius(temp)}</p>
+//   </>
+// }
+// ----------------- задача 34 -------------------------------
+// Даны 5 инпутов. Сделайте так, чтобы при вводе чисел в наши инпуты в абзац выводилось среднее арифметическое введенных чисел.
+// ----------------- задача 34 -------------------------------
 function App() {
-	let [count, setCount] = useState(0);
-	
-	function counter() {
-		setCount(count + 1);
-	}
-	
-	return <div>
-		<span>{count}</span>
-		<button onClick={counter}>+</button>
-	</div>;
+  let [value1, setValue1] = useState('10');
+  let [value2, setValue2] = useState('10');
+  let [value3, setValue3] = useState('10');
+  let [value4, setValue4] = useState('10');
+  let [value5, setValue5] = useState('10');
+
+  function arithmeticalMean(values) {
+    //если передают строчные значения
+    const numberValues = values.map(Number);
+    let sum = 0;
+    const count = numberValues.length;
+    numberValues.forEach( value => sum += value);
+    return sum / count;
+  }
+
+  function handleChange1(evt) {
+    setValue1(evt.target.value)
+  }
+  function handleChange2(evt) {
+    setValue2(evt.target.value)
+  }
+  function handleChange3(evt) {
+    setValue3(evt.target.value)
+  }
+  function handleChange4(evt) {
+    setValue4(evt.target.value)
+  }
+  function handleChange5(evt) {
+    setValue5(evt.target.value)
+  }
+  return <>
+  <span>Значение 1: </span>
+  <input value={value1} onChange={handleChange1}/><br/>
+  <span>Значение 2: </span>
+  <input value={value2} onChange={handleChange2}/><br/>
+  <span>Значение 3: </span>
+  <input value={value3} onChange={handleChange3}/><br/>
+  <span>Значение 4: </span>
+  <input value={value4} onChange={handleChange4}/><br/>
+  <span>Значение 5: </span>
+  <input value={value5} onChange={handleChange5}/><br/>
+  <p>Среднее арифметическое: {arithmeticalMean([value1, value2, value3, value4, value5])}</p>
+  </>
 }
 export default App;
