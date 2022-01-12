@@ -623,19 +623,67 @@ import uuid from 'react-uuid'
 //   const [checkedJS, setCheckedJS] = useState(true);
 //   const [checkedCSS, setCheckedCSS] = useState(false);
 //   const [checkedHTML, setCheckedHTML] = useState(false);
-//   const [resultJS, setResultJS] = useState('JS');
-//   const [resultCSS, setResultCSS] = useState('CSS');
-//   const [resultHTML, setResultHTML] = useState('HTML');
 
 //   return <div>
 //     <span>JS</span><input type="checkbox" checked={checkedJS} onChange={() => setCheckedJS(!checkedJS)}/>
 //     <span>CSS</span><input type="checkbox" checked={checkedCSS} onChange={() => setCheckedCSS(!checkedCSS)}/>
 //     <span>HTML</span><input type="checkbox" checked={checkedHTML} onChange={() => setCheckedHTML(!checkedHTML)}/>
 //     <p>Пользователь знает:</p>
-//     <p>{checkedJS && resultJS }</p>
-//     <p>{checkedCSS && resultCSS}</p>
-//     <p>{checkedHTML && resultHTML}</p>
+//     <p>{checkedJS && 'JS' }</p>
+//     <p>{checkedCSS && 'CSS'}</p>
+//     <p>{checkedHTML && 'HTML'}</p>
 //   </div>
 // }
+// ----------------- задача 39 -------------------------------
+// Дан чекбокс. С помощью чекбокса спросите у пользователя, если ли ему уже 18 лет. 
+// Если чекбокс отмечен, покажите пользователю следующий блок кода:
 
+// <div>
+// 	<h2>Ура, вам уже есть 18</h2>
+// 	<p>
+// 		здесь расположен контент только для взрослых
+// 	</p>
+// </div>
+// А если чекбокс не отмечен - то следующий:
+
+// <div>
+// 	<p>
+// 		увы, вам еще нет 18 лет:(
+// 	</p>
+// </div>
+// ----------------- задача 39 -------------------------------
+// function App() {
+//   let [checked, setChecked] = useState(false);
+//   let message;
+//   if (checked) {
+//     message = <div><h2>Ура, вам уже есть 18</h2>
+// 	<p>
+// 		здесь расположен контент только для взрослых
+// 	</p></div>
+//   }
+//   else {
+//     message = <div>
+// 	<p>
+// 		увы, вам еще нет 18 лет:(
+// 	</p>
+// </div>
+//   }
+//   return <div>
+//   <span>Вам исполнилось уже 18 лет?</span>
+//   <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)}/>
+//   {message}
+//   </div>
+// }
+// ----------------- задача 40 -------------------------------
+// Дан чекбокс и абзац. Если чекбокс отмечен, пусть абзац будет видимым на экране, а если не отмечен - спрячьте его.
+// ----------------- задача 40 -------------------------------
+function App() {
+  let [checked, setChecked] = useState(true);
+  const message = checked && <p>Какой-то текст</p>
+  return <>
+  <span>Нажми на меня  </span>
+  <input type="checkbox" defaultChecked={checked} onChange={() => setChecked(!checked)}/>
+  {message}
+  </>
+}
 export default App;
