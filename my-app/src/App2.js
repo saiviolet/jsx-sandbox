@@ -160,5 +160,84 @@ import uuid from 'react-uuid'
 //     <button onClick={addNewItem}>Жамк!</button>
 //   </div>
 // }
+// ----------------- задача 48 -------------------------------
+// Сделайте кнопку, по нажатию на которую будет происходить удаление элемента из массива. 
+// Пусть номер элемента для удаления хранится в переменной.
+// ----------------- задача 48 -------------------------------
+  // function App2() {
+  //   const item = 2;
+  //   const [arr, setArr] = useState([12,15,17,14,63,21,15])
+  //   function deleteItem() {
+  //     //сделать копию массива
+  //     const copyArr = Object.assign([], arr);
+  //     //удалить элемент
+  //     copyArr.splice(item-1, 1);
+  //     setArr(copyArr);
+  //   }
+  //   return <div>
+  //     <p>Массив: {arr.join(', ')}</p>
+  //     <span>Нажми, чтобы удалить {item} элемент ({arr[item-1]})</span><br/>
+  //     <button onClick={deleteItem}>Удалить!</button>
+  //   </div>
+  // }
+  // ----------------- задача 49 -------------------------------
+  // function App2() {
+  //   const item = 2;
+  //   const [arr, setArr] = useState([12,15,17,14,63,21,15])
+  //   function deleteItem() {
+  //     //сделать копию массива
+  //     const copyArr = Object.assign([], arr);
+  //     //удалить элемент
+  //     copyArr[item-1] = 10000000;
+  //     setArr(copyArr);
+  //   }
+  //   return <div>
+  //     <p>Массив: {arr.join(', ')}</p>
+  //     <span>Нажми, чтобы изменить {item} элемент на 10000000</span><br/>
+  //     <button onClick={deleteItem}>Удалить!</button>
+  //   </div>
+  // }
+  // ----------------- задача 50 -------------------------------
+  // Дан массив: const notes = ['a', 'b', 'c', 'd', 'e'];
+  // Выведите элементы этого массива в виде списка ul. 
+  // Добавьте инпут для добавления новых пунктов списка. Пусть добавление происходит по потери фокуса в инпуте.
+    // ----------------- задача 50 -------------------------------
+  //   function App2() {
+  //     let [notes, setNotes] = useState(['a', 'b', 'c', 'd', 'e']);
+  //     let [value, setValue] = useState('');
 
+  //     const res = notes.map(item => <li key={uuid()}>{item}</li>)
+  //     function addNewItem(item) {
+  //       setNotes([...notes, item.target.value]);
+  //       setValue('');
+  // }
+  //     return <>
+  //     <span>Масcив элементов: </span>
+  //     <ul>{res}</ul>
+  //     <span>Добавить элемент в массив по потери фокуса в инпуте: </span>
+  //     <input value={value} onChange={evt => setValue(evt.target.value)} onBlur={evt => addNewItem(evt)}/>
+  //     </>
+  //   }
+// ----------------- задача 51 -------------------------------
+// Дан массив:
+// const notes = ['a', 'b', 'c', 'd', 'e'];
+// Выведите элементы этого массива в виде списка ul. Сделайте так, чтобы в конце каждой li стояла кнопка для ее удаления.
+// ----------------- задача 51 -------------------------------
+// function App2() {
+//   let [notes, setNotes] = useState(['a', 'b', 'c', 'd', 'e']);
+
+//   const res = notes.map((item, index) => {
+//     return <li key={uuid()}>{item}
+//     <button onClick={() => remItem(index)}> удалить</button>
+//     </li>
+
+// })
+// function remItem(index) {
+//   setNotes([...notes.slice(0, index), ...notes.slice(index + 1)]);
+// }
+//   return <>
+//   <span>Масcив элементов: </span>
+//   <ul>{res}</ul>
+//   </>
+// }
 export default App2;
